@@ -81,10 +81,6 @@ allRouters.get("/dashboard", async (req, res) => {
   const dashboardData = await getDashboard();
   res.json(dashboardData);
 });
-const fs = require('fs');
-const path = require('path');
-const fsPromises = fs.promises;
-
 allRouters.post("/quiz", async (req, res) => {
   try {
     // Input validation
@@ -107,6 +103,41 @@ allRouters.post("/quiz", async (req, res) => {
     console.error(err);
     // Respond with a proper error
     res.status(500).json({ error: "Something went wrong on the server", details: err.message });
+  }
+});
+
+allRouters.get("/quiz/:id", async (req, res) => {
+  try {
+    const quizId = req.params.id;
+
+    // Validate ID (Example: Only allow alphanumeric IDs)
+    if (!/^[a-zA-Z0-9_-]+$/.test(quizId)) {
+      return res.status(400).json({ error: "Invalid quiz ID format" });
+    }
+
+    const fileName = quizId + ".json";
+    const filePath = path.join(quizzesPath, fileName);
+
+    // Check if the file exists
+    const fileExists = await fsPromises.stat(filePath).catch(() => false);
+    if (!fileExists) {
+      return res.status(404).json({ error: "Quiz not found" });
+    }
+
+    const data = await fsPromises.readFile(filePath, "utf8");
+
+    // Parse the data and return the response
+    try {
+      const quizData = JSON.parse(data);
+      res.json(quizData);
+    } catch (parseErr) {
+      console.error(parseErr);
+      return res.status(500).json({ error: "Invalid JSON in quiz file", details: parseErr.message });
+    }
+  } catch (err) {
+    console.error(err);
+    // General catch for other errors
+    res.status(500).json({ error: "Server error", details: err.message });
   }
 });
 
