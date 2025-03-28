@@ -19,18 +19,18 @@ export const components = {
   fillInTheBlank: FillInTheBlank,
   sentenceScramble: SentenceScramble,
   spotTheMistake: SpotTheMistake,
-  sentenceCompletion: SentenceCompletion
+  sentenceCompletion: SentenceCompletion,
 };
 
 export const questionTypes = {
-  "multipleChoice": "Multiple Choice Question",
-  "checkbox": "Checkbox Question",
-  "wordBank": "Word Bank",
-  "matching": "Matching",
-  "shortAnswer": "Short Answer",
-  "longAnswer": "Long Answer",
-  "fillInTheBlank": "Fill in the Blank",
-  "sentenceScramble": "Sentence Scramble",
-  "spotTheMistake": "Spot the Mistake",
-  "sentenceCompletion": "Sentence Completion (Drag & Drop)"
-}
+  multipleChoice: "Multiple Choice Question",
+  checkbox: "Checkbox Question",
+  wordBank: "Word Bank",
+  matching: "Matching",
+  shortAnswer: "Short Answer",
+  longAnswer: "Long Answer",
+  fillInTheBlank: "Fill in the Blank",
+  sentenceScramble: "Sentence Scramble",
+  spotTheMistake: "Spot the Mistake",
+  sentenceCompletion: "Sentence Completion (Drag & Drop)",
+};

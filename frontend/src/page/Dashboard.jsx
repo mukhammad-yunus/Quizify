@@ -41,7 +41,7 @@ const Dashboard = () => {
     <div className="m-4 flex flex-col gap-4">
       <div className="flex justify-between">
         <h1>Dashboard</h1>
-        <Link to={"/quiz/create"}>
+        <Link to={"/create/quiz"}>
           <div className="flex">
             <p className="bg-blue-500 text-neutral-50 rounded py-0.5 px-3 transition hover:bg-blue-400 cursor-pointer">Create a quiz</p>
           </div>
